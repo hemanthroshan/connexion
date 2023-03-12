@@ -1,0 +1,67 @@
+<div class="jira">
+    <h2 class="mainHeading">
+        Jira Board
+    </h2>
+    <div class="addList">
+        <button mat-raised-button color="primary" (click)="addList('AddList','')">Add List</button>
+    </div><br>
+    
+    <div style="display:flex;justify-content: center;">
+      <div *ngFor="let dat of this.service.overItems" cdkDropListGroup style="display:flex;justify-content: space-around;margin-right:5px">
+          <div class="example-container">
+            <div style="padding:5px;display:flex;justify-content: space-between;color:white;background-color: grey;">
+              <div><h3>{{dat.title}}</h3></div>
+              <div (click)="closeStatus(dat.title)"><mat-icon>close</mat-icon></div>
+            </div>
+        
+            <div
+              cdkDropList
+              [cdkDropListData]="dat.data"              
+              [id]="'status-' + dat.title"              
+              (cdkDropListDropped)="drop($event)" >
+              <div *ngFor="let item of dat.data" cdkDrag>
+                <mat-card style="margin-bottom:9px">                
+                  <mat-card-content>
+                    <div >
+                      <div style="display:flex;justify-content: space-between;align-items: center;">
+                        <div>{{item.name}}</div>
+                        <div><button mat-icon-button class="close-button" (click)="closeCard(dat.title,item.id)">
+                          <mat-icon>close</mat-icon>
+                        </button></div>
+                      </div>
+                      <div> {{item.desc}}</div>
+                    </div>
+                  </mat-card-content>                
+                </mat-card>
+              </div>
+              <div style="text-align: center;">
+                <mat-icon (click)="addList('AddItem',dat.title)">add_circle</mat-icon>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+     
+    
+    <!-- <div class="board">
+      <div class="board-wrapper">
+        <div class="board-columns" cdkDropListGroup>
+          <div class="board-column" *ngFor="let dat of this.service.overItems">
+            <div class="p-pt-2 p-mb-3">
+              <span class="column-title">{{dat.title}}</span>
+            </div>
+            <div class="tasks-container" cdkDropList [cdkDropListData]="dat.tasks" (cdkDropListDropped)="drop($event)">
+              <div class="task hover_shadow" *ngFor="let item of dat.data" cdkDrag style="">
+                <div>
+                  <div class="p-mb-2"><span style="color:#98a6ad;border-radius:10px; padding:0px 6px">{{item.name}}</span>
+                  </div>
+                  <div class="p-mb-2" style="color:#023866;padding: 0px 6px;"><b>{{item.desc}}</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+</div>

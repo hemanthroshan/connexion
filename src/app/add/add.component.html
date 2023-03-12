@@ -1,0 +1,27 @@
+<mat-dialog-content class="custom-dialog">
+    <form style="text-align: center;" [formGroup] = "addForm">
+        <div *ngIf="isStatus">
+            <mat-form-field class="example-full-width">
+                <mat-label>Status Name</mat-label>
+                <input matInput formControlName="statusName">
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" (click)="updateValue('status')">Add Status</button>
+            </div>
+        </div>    
+        <div *ngIf="isItem">
+            <mat-form-field class="example-full-width">
+                <mat-label>Item Name</mat-label>
+                <input matInput formControlName="itemName">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Item Description</mat-label>
+                <input matInput formControlName="itemDesc">
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" (click)="updateValue('item')">Add Item</button>
+            </div>
+        </div>    
+    </form>
+</mat-dialog-content>
+
