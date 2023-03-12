@@ -20,3 +20,4 @@ According to the problem tasks to complete
 7. Each individual card should have the specified fields
 8. Sort the cards respective of their creation time
 9. Allow duplicate cards
+10. Delete of Complete Status will remove entire status along with all the cards it holding
